@@ -1,0 +1,16 @@
+[
+    {
+      "modid": "rftrash",
+      "name": "RFTrash",
+      "description": "Trash Can that converts your garbage to RF.",
+      "version": "${version}",
+      "mcversion": "${mcversion}",
+      "url": "",
+      "updateUrl": "",
+      "authorList": ["Tylian"],
+      "credits": "Yes.",
+      "logoFile": "",
+      "screenshots": [],
+      "dependencies": []
+    }
+]
