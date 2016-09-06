@@ -1,2 +1,5 @@
 # Blocks
 tile.rftrash.rftrash.name=RF Trash Can
+
+# Other
+rftrash.storedEnergy=Stored Energy:

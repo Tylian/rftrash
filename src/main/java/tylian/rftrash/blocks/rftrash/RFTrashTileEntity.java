@@ -122,7 +122,7 @@ public class RFTrashTileEntity extends TileEntity implements IEnergyProvider, IT
 	}
 
 	private void handleSendEnergy() {
-		int energyStored = getEnergyStored(EnumFacing.DOWN);
+		int energyStored = getEnergyStored(null);
 
 		// handle sending power out
 		for (EnumFacing dir : EnumFacing.values()) {
