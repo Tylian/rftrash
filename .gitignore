@@ -1,0 +1,12 @@
+.gradle/
+.settings/
+.externalToolBuilders/
+
+run/
+build/
+bin/
+
+.classpath
+.project
+*_Client.launch
+*_Server.launch
