@@ -2,8 +2,6 @@ package tylian.rftrash.blocks.rftrash;
 
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import net.minecraft.block.Block;
@@ -11,7 +9,6 @@ import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -33,30 +30,31 @@ import tylian.rftrash.compat.waila.IWailaInfoProvider;
 import tylian.rftrash.blocks.rftrash.RFTrashTileEntity;
 
 public class RFTrashBlock extends Block implements ITileEntityProvider, IWailaInfoProvider {
-	protected static final AxisAlignedBB CAN_AABB = new AxisAlignedBB(0.0625D, 0.0D, 0.0625D, 0.9375D, 0.8125D, 0.9375D);
-	
+	protected static final AxisAlignedBB CAN_AABB = new AxisAlignedBB(0.0625D, 0.0D, 0.0625D, 0.9375D, 0.8125D,
+			0.9375D);
+
 	public RFTrashBlock() {
 		super(Material.ROCK);
-		
+
 		setRegistryName("rftrash");
 		setUnlocalizedName(RFTrash.MODID + ".rftrash");
 		setCreativeTab(RFTrash.creativeTab);
-		
+
 		GameRegistry.register(this);
 		GameRegistry.register(new ItemBlock(this), getRegistryName());
 		GameRegistry.registerTileEntity(RFTrashTileEntity.class, RFTrash.MODID + "_rftrash");
 	}
-	
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
-    {
-        return CAN_AABB;
-    }
 
-    public boolean isFullCube(IBlockState state)
-    {
-        return false;
-    }
-	
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		return CAN_AABB;
+	}
+
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		return false;
+	}
+
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new RFTrashTileEntity();
@@ -93,14 +91,16 @@ public class RFTrashBlock extends Block implements ITileEntityProvider, IWailaIn
 		player.openGui(RFTrash.instance, RFTrash.GUI_RFTRASH, world, pos.getX(), pos.getY(), pos.getZ());
 		return true;
 	}
-	
+
 	@Override
-    public List<String> getWailaBody(ItemStack itemStack, List<String> tip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-        TileEntity te = accessor.getTileEntity();
-        if (te instanceof RFTrashTileEntity) {
-        	RFTrashTileEntity rfTrashTE = (RFTrashTileEntity) te;
-        	tip.add(String.format("%s%,d / %,d RF", TextFormatting.GRAY, rfTrashTE.getEnergyStored(null), rfTrashTE.getMaxEnergyStored(null)));
-        }
-        return tip;
-    }
+	public List<String> getWailaBody(ItemStack itemStack, List<String> tip, IWailaDataAccessor accessor,
+			IWailaConfigHandler config) {
+		TileEntity te = accessor.getTileEntity();
+		if (te instanceof RFTrashTileEntity) {
+			RFTrashTileEntity rfTrashTE = (RFTrashTileEntity) te;
+			tip.add(String.format("%s%,d / %,d RF", TextFormatting.GRAY, rfTrashTE.getEnergyStored(null),
+					rfTrashTE.getMaxEnergyStored(null)));
+		}
+		return tip;
+	}
 }

@@ -3,7 +3,6 @@ package tylian.rftrash;
 import org.apache.logging.log4j.Logger;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -33,14 +32,14 @@ public class RFTrash {
 	public static RFTrash instance;
 
 	public static Logger logger;
-	
-    public static CreativeTabs creativeTab = new CreativeTabs("RFTrash") {
-        @Override
-        @SideOnly(Side.CLIENT)
-        public Item getTabIconItem() {
-            return Item.getItemFromBlock(ModBlocks.rfTrashCan);
-        }
-    };
+
+	public static CreativeTabs creativeTab = new CreativeTabs("RFTrash") {
+		@Override
+		@SideOnly(Side.CLIENT)
+		public Item getTabIconItem() {
+			return Item.getItemFromBlock(ModBlocks.rfTrashCan);
+		}
+	};
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {

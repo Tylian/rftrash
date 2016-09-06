@@ -9,15 +9,9 @@ public class ModCrafting {
 	public static void init() {
 		addBlockRecipies();
 	}
-	
+
 	public static void addBlockRecipies() {
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.rfTrashCan),
-				"SSS",
-				"CHC",
-				"CRC",
-				'S', Blocks.STONE,
-				'C', Blocks.COBBLESTONE,
-				'H', Blocks.CHEST,
-				'R', Items.REDSTONE);
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.rfTrashCan), "SSS", "CHC", "CRC", 'S', Blocks.STONE, 'C',
+				Blocks.COBBLESTONE, 'H', Blocks.CHEST, 'R', Items.REDSTONE);
 	}
 }
